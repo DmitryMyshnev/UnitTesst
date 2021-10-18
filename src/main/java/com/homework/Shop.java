@@ -24,8 +24,9 @@ public class Shop implements Service {
             if (warehouse.getProductByKey(c) != null) {
                 Long stockCount = warehouse.getProductByKey(c).getStockCount();
                 long charEqualsCount = charEquals.stream().filter(f -> (f.equals(c))).count();
-                if (charEqualsCount >= stockCount) {
-                    total += warehouse.getProductByKey(c).getStockPrice();
+
+                if (charEqualsCount % stockCount == 0) {
+                    total += warehouse.getProductByKey(c).getStockPrice()/stockCount;
                 } else {
                     total += warehouse.getProductByKey(c).getPrice();
                 }
