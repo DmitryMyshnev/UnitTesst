@@ -24,7 +24,8 @@ public class ShopTest {
         Mockito.when(mock.getTotalPrice("123")).thenReturn(0.0);
         Mockito.when(mock.getTotalPrice("AAA")).thenReturn(3.0);
         Mockito.when(mock.getTotalPrice("AA")).thenReturn(2.5);
-        Mockito.when(mock.getTotalPrice("AAAA")).thenReturn(5.0);
+        Mockito.when(mock.getTotalPrice("AAAA")).thenReturn(4.25);
+        Mockito.when(mock.getTotalPrice("AAAAAAA")).thenReturn(7.25);
 
     }
 
@@ -84,6 +85,11 @@ public class ShopTest {
     @Test
     public void getTotalPriceBetweenSpecialPrice() {
         Double res = shop.getTotalPrice("AAAA");
-        Assert.assertEquals("It is not true ", 5.0, res, 0.0);
+        Assert.assertEquals("It is not true ", 4.25, res, 0.0);
+    }
+    @Test
+    public void getTotalPriceAfterSpecialPrice() {
+        Double res = shop.getTotalPrice("AAAAAAA");
+        Assert.assertEquals("It is not true ", 7.25, res, 0.0);
     }
 }
